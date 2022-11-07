@@ -1,0 +1,21 @@
+<input type="text" id="inp">
+<button type="button" id="bt">Получить данные</button>
+<script>
+    const inp = document.getElementById('inp');
+    const bt = document.getElementById('bt')
+
+    async function getValue(url) {
+        const response = await fetch(url);
+        const result = await response.text();
+
+        return result;
+    }
+
+    async function setValue() {
+        const answer = await getValue(inp.value);
+
+        inp.value = answer;
+    }
+
+    bt.addEventListener('click', setValue)
+</script>
